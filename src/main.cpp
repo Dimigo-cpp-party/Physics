@@ -58,7 +58,7 @@ int init() {
   SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 24);
   SDL_GL_SetAttribute(SDL_GL_STENCIL_SIZE, 8);
 
-  window = SDL_CreateWindow("Physics",
+  window = SDL_CreateWindow("Simulation",
                             SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
                             960, 720, SDL_WINDOW_OPENGL);
   if(nullptr == window) {

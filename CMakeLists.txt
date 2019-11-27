@@ -16,6 +16,12 @@ add_executable(
 )
 
 add_library(
+        Simulation
+        src/Simulation/Polygon.cpp
+)
+target_link_libraries(Physics Simulation)
+
+add_library(
         imgui
         imgui/imgui.cpp
         imgui/imgui_demo.cpp
