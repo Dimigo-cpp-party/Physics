@@ -4,17 +4,19 @@ namespace Physics {
 
 double Area(const points &p) {
   double A = 0.0;
-  for(int i=0; i<p.size()-1; ++i) {
-    A += p[i].x*p[i+1].y-p[i+1].x*p[i].y;
+  for(int i=0; i<p.size(); ++i) {
+    int j = (i+1)%p.size();
+    A += p[i].x*p[j].y-p[j].x*p[i].y;
   }
   return A/2.0;
 }
 
 glm::dvec2 COG(const points &p) {
   double x=0.0, y=0.0, A = Area(p)*6.0;
-  for(int i=0; i<p.size()-1; ++i) {
-    x += (p[i].x + p[i+1].x)*(p[i].x*p[i+1].y-p[i+1].x*p[i].y);
-    y += (p[i].y + p[i+1].y)*(p[i].x*p[i+1].y-p[i+1].x*p[i].y);
+  for(int i=0; i<p.size(); ++i) {
+    int j = (i+1)%p.size();
+    x += (p[i].x + p[j].x)*(p[i].x*p[j].y-p[j].x*p[i].y);
+    y += (p[i].y + p[j].y)*(p[i].x*p[j].y-p[j].x*p[i].y);
   }
   return glm::dvec2(x/A, y/A);
 }
